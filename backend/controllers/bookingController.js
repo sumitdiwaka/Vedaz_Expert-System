@@ -45,7 +45,7 @@ exports.getBookingsByEmail = async (req, res) => {
     try {
         const { email } = req.query;
         const bookings = await Booking.find({ userEmail: email })
-            .populate('expertId') // This replaces the ID with the Expert document
+            .populate('expertId') 
             .sort({ createdAt: -1 });
 
         res.json(bookings);

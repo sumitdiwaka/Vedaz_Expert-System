@@ -1,5 +1,5 @@
 require('dotenv').config();
-const mongoose = require('mongoose'); // <--- THIS WAS MISSING
+const mongoose = require('mongoose');
 const Expert = require('./models/Expert');
 const seedExperts = [
   {
