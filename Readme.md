@@ -1,6 +1,8 @@
 🚀 ExpertBook: Real-Time Session Booking System
 ExpertBook is a full-stack MERN application designed for seamless expert-client consultations. It features real-time slot management, robust booking validation, and a modern, responsive UI built with Vite and Tailwind CSS.
 
+Live Link:-https://vedaz-expert-system.vercel.app
+
 ✨ Key Features
 Real-Time Slot Updates: Utilizing Socket.io to instantly disable booked slots across all connected clients without page refreshes.
 
