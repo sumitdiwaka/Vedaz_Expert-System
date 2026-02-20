@@ -26,11 +26,12 @@ const ExpertDetail = () => {
     const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
         const fetchDetails = async () => {
             setLoading(true);
             setError('');
             try {
-                const res = await axios.get(`http://localhost:5000/api/experts/${id}`);
+               const res = await axios.get(`${API_URL}/experts/${id}`);
                 setExpert(res.data);
                 
                 // Set first available date as default

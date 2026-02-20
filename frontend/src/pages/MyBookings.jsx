@@ -39,11 +39,11 @@ const MyBookings = () => {
         
         setLoading(true);
         setError('');
-        
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
         try {
-            const res = await axios.get(`http://localhost:5000/api/bookings?email=${email}`);
-            setBookings(res.data);
-            setHasSearched(true);
+           const res = await axios.get(`${API_URL}/bookings?email=${email}`);
+        setBookings(res.data);
+        setHasSearched(true);
             localStorage.setItem('bookingEmail', email);
         } catch (err) {
             setError('Failed to fetch bookings. Please try again.');

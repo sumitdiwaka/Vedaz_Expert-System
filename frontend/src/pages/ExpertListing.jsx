@@ -22,19 +22,18 @@ const ExpertListing = () => {
         { id: 'consulting', name: 'Consulting', icon: '🤝', color: 'bg-orange-100 text-orange-600' },
     ];
 
-    const fetchExperts = async () => {
-        setLoading(true);
-        setError('');
-        try {
-            const res = await axios.get(`http://localhost:5000/api/experts?page=${page}&search=${search}&category=${category}`);
-            setExperts(res.data.experts);
-            setTotalPages(res.data.totalPages);
-        } catch (err) {
-            setError('Failed to load experts. Please try again.');
-            console.error("Error fetching experts", err);
-        }
-        setLoading(false);
-    };
+const fetchExperts = async () => {
+    setLoading(true);
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    try {
+        const res = await axios.get(`${API_URL}/experts?page=${page}&search=${search}&category=${category}`);
+        setExperts(res.data.experts);
+        setTotalPages(res.data.totalPages);
+    } catch (err) {
+        console.error("Error fetching experts", err);
+    }
+    setLoading(false);
+};
 
     useEffect(() => { fetchExperts(); }, [page, category]);
 

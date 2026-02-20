@@ -102,7 +102,7 @@ const BookingForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
         // Mark all fields as touched
         const allTouched = {};
         Object.keys(formData).forEach(key => allTouched[key] = true);
@@ -120,13 +120,12 @@ const BookingForm = () => {
         setStatus({ type: '', msg: '' });
 
         try {
-            await axios.post('http://localhost:5000/api/bookings', {
-                ...formData,
-                expertId: expert._id,
-                expertName: expert.name,
-                date: selectedSlot.date,
-                time: selectedSlot.time
-            });
+       await axios.post(`${API_URL}/bookings`, {
+            ...formData,
+            expertId: expert._id,
+            date: selectedSlot.date,
+            time: selectedSlot.time
+        });
             
             setStatus({ 
                 type: 'success', 
